@@ -3,7 +3,7 @@ USE GerenciamentoEmprestimo2
 
 CREATE TABLE usuarios(
 
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     matricula VARCHAR(10) NOT NULL,
     contato VARCHAR(14) NOT NULL 
