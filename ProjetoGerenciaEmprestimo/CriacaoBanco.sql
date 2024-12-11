@@ -1,5 +1,5 @@
-CREATE DATABASE GerenciamentoEmprestimo
-USE GerenciamentoEmprestimo
+CREATE DATABASE GerenciamentoEmprestimo2
+USE GerenciamentoEmprestimo2
 
 CREATE TABLE usuarios(
 
@@ -8,6 +8,18 @@ CREATE TABLE usuarios(
     matricula VARCHAR(10) NOT NULL,
     contato VARCHAR(14) NOT NULL 
     
+);
+
+CREATE TABLE predios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(1) NOT NULL
+);
+
+CREATE TABLE salas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(3) NOT NULL,
+    id_predio INT NOT NULL,
+    FOREIGN KEY (id_predio) REFERENCES predios(id)
 );
 
 CREATE TABLE itens (
@@ -22,17 +34,6 @@ CREATE TABLE itens (
 );
 
 
-CREATE TABLE predios (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(1) NOT NULL
-);
-
-CREATE TABLE salas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(3) NOT NULL,
-    id_predio INT NOT NULL,
-    FOREIGN KEY (id_predio) REFERENCES predios(id)
-);
 
 CREATE TABLE log_acao (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -42,7 +43,7 @@ CREATE TABLE log_acao (
     data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- ---------------------------- Trigger 1
+-- ---------------------------- Triggers
 DELIMITER $$
 
 CREATE TRIGGER trg_log_estado_update
@@ -86,7 +87,4 @@ END$$
 DELIMITER ;
 
 
--- -------------------------------
-
-
-
+-- ------------------------------- TERMINA AQUI
